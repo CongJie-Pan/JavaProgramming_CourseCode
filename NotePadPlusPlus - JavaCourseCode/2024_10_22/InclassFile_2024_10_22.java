@@ -44,24 +44,36 @@ public class InclassFile_2024_10_22 {
 		
 		*/
 		
-		/* Code Area Three - Nested For loop */
+		/* Code Area Four - Nested For loop */
+		/*
 		for(int i=1;i<=10;i++){
 			for(int j=1; j<= i; j++){
 				System.out.print("*");
 			}
 			System.out.println();
 		}
+		*/
 		
-		System.out.println();
 		
+		//System.out.println();
+		
+		/*
 		for(int i=1;i<=10;i++){
 			for(int j=10; j >= i ; j--){
 				System.out.print("*");
 			}
 			System.out.println();
 		}
+		*/
 		
-		
+		/* Code Area Five - Continue */
+		for (int i = 1; i <= 10; i++) {
+            // If the number is odd, skip the rest of the loop and move to the next iteration
+            if (i % 2 != 0) {
+                continue;
+            }
+            System.out.println("Even number: " + i); // This line will only print for even numbers
+        }
 		
 	}
 }
