@@ -1,0 +1,14 @@
+class Rect(){
+
+
+
+}
+
+public class Inclass_12_03_2024 {
+
+	public class void main(String args[]){
+		System.out.println("Hello");
+
+	}
+
+}
