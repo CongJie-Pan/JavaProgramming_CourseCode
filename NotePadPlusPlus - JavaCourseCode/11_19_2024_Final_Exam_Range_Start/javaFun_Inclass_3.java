@@ -4,14 +4,14 @@ public class javaFun_Inclass_3 {
         Rect r1 = new Rect();
         r1.width = 5;
         r1.height = 10;
-        System.out.printf("	Rect : Area = %d, Perimeter = %d \n", r1.area(), r1.perimeter());  // 需要加上()
+        System.out.printf("[Rect] Width : %d, Height : %d；Area = %d, Perimeter = %d \n",r1.width, r1.height, r1.area(), r1.perimeter());  // 需要加上()
 		
 		Circle c1 = new Circle();
         c1.radius = 10;
-        System.out.printf("Circle : Area = %.2f, Perimeter = %.2f \n", c1.area(), c1.perimeter());  // 需要加上()
+        System.out.printf("[Circle] Radius : %.2f ； Area = %.2f, Perimeter = %.2f \n", c1.radius, c1.area(), c1.perimeter());  // 需要加上()
     }
     
-    static class Rect{  // 需要加上 static
+    public class Rect{  // 需要加上 static
         int width, height;
         
         public int area(){
@@ -23,7 +23,7 @@ public class javaFun_Inclass_3 {
         }
     }
 	
-	static class Circle{  // 需要加上 static
+	public class Circle{  // 需要加上 static
         double radius;
         
         public double area(){

@@ -1,5 +1,16 @@
 public class javaFun_Inclass_2 {
 	
+	/**
+	*	Write a program that processes an integer array, 
+	*	increases each element by 5, and determines the maximum and minimum values in the modified array.
+	*	---
+	*	Expected output :
+		84;55;94;32;15;74;48;
+		89;60;99;37;20;79;53;
+		Max: 99 ; Min: 20
+	* 	---
+	*/
+	
 	public static void main(String args[]){
 		
 		int t[] = {84, 55, 94, 32, 15, 74, 48};
