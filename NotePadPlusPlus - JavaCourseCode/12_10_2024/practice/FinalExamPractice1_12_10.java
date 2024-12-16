@@ -1,15 +1,15 @@
 
-abstract class Shape { /* Not familiar */
-	String color; 
+/* 提醒： 只要是類別就要加class */
+abstract class Shape {
+	String color;
 	
-	public void setColor(String c) {
+	public void setColor(String c){
 		color = c;
-	}
+	} 
 	
-	public abstract void show(); 
-    /* What this line of code meaning ? */
-    /* 確保所有繼承 Shape 的子類別都有一個 show() 方法。讓子類別實現它自己的版本。*/
+	public abstract void show();
 }
+
 
 class Circle extends Shape { 
     /* Why can not add public, like public class ?  When to add public ?*/
@@ -110,26 +110,24 @@ public class FinalExamPractice1_12_10 {
 	
 	public static void main (String[] args){
 		
-		/* Not familiar with this */
-		
 		Circle[] object1 = new Circle[3];
 		Rectangle[] object2 = new Rectangle[4];
 		
 		object1[0] = new Circle();
-		object1[1] = new Circle(3.6);
-		object1[2] = new Circle(4.8);
+		object1[1] = new Circle(5.8);
+		object1[2] = new Circle(6.7);
 		
 		object2[0] = new Rectangle();
-		object2[1] = new Rectangle(5.0,6.0);
-		object2[2] = new Rectangle(7.0,8.0);
-		object2[3] = new Rectangle(9.0,10.0);
+		object2[1] = new Rectangle(5.7, 9.7);
+		object2[2] = new Rectangle(9.4, 4.7);
+		object2[3] = new Rectangle(10.0, 11.0);
 		
 		for (int i = 0; i < object1.length; i++){
-			object1[i].setColor("Yellow"); // Not familiar with this 
+			object1[i].setColor("Yellow");
 			object1[i].show();
 		}
 		
-		System.out.println("=============");
+		System.out.println("==================");
 		
 		for (int i = 0; i < object2.length; i++){
 			object2[i].setColor("Orange");
