@@ -1,23 +1,43 @@
-/** abstract : It may be difficult to set categories at first, 
-*	so set variables for later people or subcategories.
-*/
 
-import java.util.Scanner;
-
-abstract class Shape {
-	String color;
-	public void setColor(String c){
+abstract class Shape { /* Not familiar */
+	String color; 
+	
+	public void setColor(String c) {
 		color = c;
 	}
 	
-	// If use the abstract, the class must use a abstract too.
-	public abstract void show();
+	public abstract void show(); 
+    /* What this line of code meaning ? */
+    /* 確保所有繼承 Shape 的子類別都有一個 show() 方法。讓子類別實現它自己的版本。*/
 }
 
-class Circle extends Shape {
-	double radius;
-	
-	public Circle(){
+class Circle extends Shape { 
+    /* Why can not add public, like public class ?  When to add public ?*/
+    /* 當該類別需要公開給其他檔案使用時便使用public。通常一個檔案只能有一個 public class，其他類別應該是預設的包級別存取（package-private）。*/
+    /* 在 Java 中，一個 .java 檔案中最多只能有一個 public 類別，並且這個類別的名稱必須與檔案名稱一致。*/
+    
+	double radius ;
+
+    /* 而類別內的 public 方法或欄位，不受此限制，用於定義類別的公共接口。
+    它們的可見性取決於類別本身的可見性（例如：如果 Circle 是包級別，public 成員只在同一個包內可用）。
+    */
+  
+    /* 以下public Circle()為建構子(constructor)，不是類別(class)，並依據 Java 的語法規定，類別的宣告不能加括號 () */
+    
+    /* 類別和建構子的定義。
+      - 類別：用來描述物件的結構和行為。
+      e.g. 
+        class Circle {
+          // 類別的成員變數和方法
+        }
+      - 建構子：用來初始化類別的物件。
+      e.g.
+        public Circle() {
+          // 初始化物件的屬性
+        }
+      */
+  
+	public Circle(){ 
 		radius = 2.0;
 	}
 	
@@ -25,7 +45,7 @@ class Circle extends Shape {
 		radius = r;
 	}
 	
-	public double getArea(){
+	public double getArea(){ /* Because it return value, use double */
 		return Math.PI * radius * radius;
 	}
 	
@@ -34,21 +54,32 @@ class Circle extends Shape {
 	}
 	
 	public void show(){
-		System.out.printf("Circle color : %s \n", color);
-		System.out.printf("Circle Radius : %.2f \n", radius);
-		System.out.printf("Circle Perimeter : %.2f \n",getPerimeter());
-		System.out.printf("Circle Area : %.2f \n",getArea()) ;
+		System.out.printf("Circle Color: %s \n", color); /* Why "Shape" function parameter can directly use in here ?*/
+		/* 因為color 是定義在父類別 Shape 中的屬性。Circle 繼承了 Shape，因此自動擁有 color 屬性。 */
+        System.out.printf("Circle Radius: %.2f \n", radius);
+		System.out.printf("Circle Perimeter: %.2f \n", getPerimeter());
+		System.out.printf("Circle Area: %.2f \n", getArea());
 		System.out.println("---");
 	}
-	
 }
 
-class Rectangle extends Shape {
-	double width, length;
+class Rectangle extends Shape { 
+	/* Why appears the error below ?*/
+	/* public class Rectangle extends Shape {
+       ^
+		1 error  
+		class Rectangle is public, should be declared in a file named Rectangle.java
+		public class Rectangle extends Shape {
+	*/
+    /* 如果類別宣告為 public，則該類別的名稱必須與檔案名稱完全一致。
+      在這個程式中，檔案名稱是 FinalExamPractice1_12_10.java。
+      所以只有 FinalExamPractice1_12_10 可以是 public。*/
+	
+	double width, length ;
 	
 	public Rectangle(){
-		width = 3.0;
-		length = 4.0;
+		width = 2.0;
+		length = 3.0;
 	}
 	
 	public Rectangle(double w, double l){
@@ -56,50 +87,56 @@ class Rectangle extends Shape {
 		length = l;
 	}
 	
-	public double getArea(){
+	public double getArea(){ 
 		return width * length;
 	}
 	
 	public double getPerimeter(){
-		return (width + length) * 2;
+		return 2 * (width + length);
 	}
 	
 	public void show(){
-		System.out.printf("Rectangle color : %s \n", color);
-		System.out.printf("Rectangle Width : %.2f \n", width);
-		System.out.printf("Rectangle Length : %.2f \n", length);
-		System.out.printf("Rectangle Area : %.2f \n", getArea());
-		System.out.printf("Rectangle Perimeter : %.2f \n", getPerimeter());
+		System.out.printf("Rectangle Color: %s \n", color);
+		System.out.printf("Rectangle Width: %.2f \n", width);
+		System.out.printf("Rectangle Length: %.2f \n", length);
+		System.out.printf("Rectangle Perimeter: %.2f \n", getPerimeter());
+		System.out.printf("Rectangle Area: %.2f \n", getArea());
 		System.out.println("---");
 	}
 }
 
+
 public class FinalExamPractice1_12_10 {
-	public static void main(String[] args){
+	
+	public static void main (String[] args){
 		
-		Circle[] obj1 = new Circle[3];
-		Rectangle[] obj2 = new Rectangle[4];
+		/* Not familiar with this */
 		
-		obj1[0] = new Circle();
-		obj1[1] = new Circle(3.6);
-		obj1[2] = new Circle(4.8);
+		Circle[] object1 = new Circle[3];
+		Rectangle[] object2 = new Rectangle[4];
 		
-		obj2[0] = new Rectangle();
-		obj2[1] = new Rectangle(5.0, 6.0);
-		obj2[2] = new Rectangle(8.0, 9.0);
-		obj2[3] = new Rectangle(10.0, 13.0);
+		object1[0] = new Circle();
+		object1[1] = new Circle(3.6);
+		object1[2] = new Circle(4.8);
 		
-		for (int i = 0; i < obj1.length; i++){
-			obj1[i].setColor("Yellow");
-			obj1[i].show();
+		object2[0] = new Rectangle();
+		object2[1] = new Rectangle(5.0,6.0);
+		object2[2] = new Rectangle(7.0,8.0);
+		object2[3] = new Rectangle(9.0,10.0);
+		
+		for (int i = 0; i < object1.length; i++){
+			object1[i].setColor("Yellow"); // Not familiar with this 
+			object1[i].show();
 		}
 		
-		System.out.println("==========");
+		System.out.println("=============");
 		
-		for (int i = 0; i < obj2.length; i++){
-			obj2[i].setColor("Yellow");
-			obj2[i].show();
+		for (int i = 0; i < object2.length; i++){
+			object2[i].setColor("Orange");
+			object2[i].show();
 		}
 		
 	}
+	
+	
 }
