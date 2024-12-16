@@ -1,8 +1,14 @@
+/** 考試時要注意之處:
+*	1. 寫完一段，檢查一次。
+*	2. 先理解題意(不懂要舉手問)，再列大綱，進而填寫裡面的內容。
+*	3. 有出錯就看看是否是字打錯問題，盡量用自動選字功能。
+/*---*/
 
 /* 提醒： 只要是類別就要加class */
 abstract class Shape {
 	String color;
 	
+	/* Because it's a function without return value, use void.  */
 	public void setColor(String c){
 		color = c;
 	} 

@@ -1,27 +1,32 @@
 import java.util.Scanner;
 
-abstract class Shape {
-    String color;
-
-    public void setColor(String c) {
-        color = c;
-    }
-
-    public abstract void show();
+abstract class Shape{
+	String color;
+	
+	public void setColor(String c){
+		color = c;
+	}
+	
+	public abstract void show();
+	
 }
 
 class Circle extends Shape {
-    double radius;
-
-    public Circle(double r) {
-        radius = r;
-    }
-
-    public double getArea() {
-        return Math.PI * radius * radius;
-    }
-
-    public double getPerimeter() {
+	double radius;
+	
+	public Circle(){
+		radius = 3.0;
+	}
+	
+	public Circle(double r){
+		radius = r;
+	}
+	
+	public double getArea(){
+		return Math.PI * radius * radius;
+	}
+	
+	public double getPerimeter() {
         return 2 * Math.PI * radius;
     }
 
@@ -35,7 +40,7 @@ class Circle extends Shape {
 }
 
 class Rectangle extends Shape {
-    double width, length;
+	double width, length;
 
     public Rectangle(double w, double l) {
         width = w;
@@ -61,59 +66,74 @@ class Rectangle extends Shape {
 }
 
 public class Advanced_FinalExamPractice2_12_10 {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        Shape[] shapes = new Shape[10]; // 陣列儲存最多 10 個形狀物件
-        int count = 0;
+	
+	public static void main(String[] args){
+		Scanner scn = new Scanner(System.in);
+		Shape[] shapes = new Shape[10];
+		int count = 0;
+		
+		while (true){
+			System.out.println("Enter the type of shape (Circle or Rectangle) or 'exit' to stop:");
+			String type = scn.next();
+			
+			if (type.equalsIgnoreCase("exit")){
+				break;
+			}
+			
+			if (type.equalsIgnoreCase("Circle")){
+				System.out.printf("Enter radius: ");
+				double radius = scn.nextDouble();
+				Circle circle = new Circle(radius);
 
-        while (true) {
-            System.out.println("Enter the type of shape (Circle or Rectangle) or 'exit' to stop:");
-            String type = scanner.next();
-
-            if (type.equalsIgnoreCase("exit")) {
+				System.out.printf("Enter color: ");
+				String color = scn.next();
+				circle.setColor(color);
+				
+				shapes[count++] = circle;
+				
+			} else if (type.equalsIgnoreCase("Rectangle")){
+				System.out.printf("Enter width: ");
+				double width = scn.nextDouble();
+				System.out.printf("Enter length: ");
+				double length = scn.nextDouble();
+				Rectangle rectangle = new Rectangle(width, length);
+				
+				System.out.printf("Enter color: ");
+				String color = scn.next();
+				rectangle.setColor(color);
+				
+				shapes[count++] = rectangle;
+				
+			} else {
+				System.out.println("Invalid shape type. Please enter 'Circle' or 'Rectangle'.");
+			}
+			
+			if (count >= shapes.length){
+				System.out.println("Shape list is full. Cannot add more shapes.");
                 break;
-            }
-
-            if (type.equalsIgnoreCase("Circle")) {
-                System.out.print("Enter radius: ");
-                double radius = scanner.nextDouble();
-                Circle circle = new Circle(radius);
-
-                System.out.print("Enter color: ");
-                String color = scanner.next();
-                circle.setColor(color);
-
-                shapes[count++] = circle;
-
-            } else if (type.equalsIgnoreCase("Rectangle")) {
-                System.out.print("Enter width: ");
-                double width = scanner.nextDouble();
-                System.out.print("Enter length: ");
-                double length = scanner.nextDouble();
-                Rectangle rectangle = new Rectangle(width, length);
-
-                System.out.print("Enter color: ");
-                String color = scanner.next();
-                rectangle.setColor(color);
-
-                shapes[count++] = rectangle;
-            } else {
-                System.out.println("Invalid shape type. Please enter 'Circle' or 'Rectangle'.");
-            }
-
-            // 陣列已滿時停止新增
-            if (count >= shapes.length) {
-                System.out.println("Shape list is full. Cannot add more shapes.");
-                break;
+			}
+		}
+		
+		System.out.println("\nShapes you entered:");
+		for (int i = 0; i < count; i++){
+			shapes[i].show();
+		}
+		
+		/* Extra Practice */
+		System.out.println("\n === Extra Practice:");
+		int[][] test = 
+            {{15, 16, 17, 8},
+             {18, 19, 20, 25},
+            };
+			
+        for (int i = 0; i < test.length; i++){
+            for (int j = 0; j < test[i].length; j++){
+                System.out.printf("%d,", test[i][j]);
             }
         }
-
-        // 顯示所有物件資訊
-        System.out.println("\nShapes you entered:");
-        for (int i = 0; i < count; i++) {
-            shapes[i].show();
-        }
-
-        scanner.close();
-    }
+		
+		scn.close();
+		
+	}
+	
 }
