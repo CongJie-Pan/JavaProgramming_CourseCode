@@ -7,6 +7,10 @@ public class FinalExamPractice1_11_19 {
      * 2. A method to print a single line of 50 stars.
      * 3. A method to print multiple lines of stars.
      */
+	 
+	 /*
+		static 成員屬於類別本身，而不是某個物件。 所有該類別的物件共享同一個 static 變數或方法。
+	 */
     
     public static void main(String[] args) {
         // Print a message and then a single line of 50 stars
@@ -26,7 +30,7 @@ public class FinalExamPractice1_11_19 {
     
     /**
      * Prints a single line of 50 stars.
-     * This method does not take any input and does not return any value. So, use static 'void'.
+     * This method does not take any input and does not return any value. So, use 'void'.
      */
     public static void printOneLineStars() {
         for (int i = 0; i < 50; i++) { // Loop to print 50 stars
@@ -37,7 +41,7 @@ public class FinalExamPractice1_11_19 {
     
     /**
      * Prints `n` lines of 50 stars each.
-     * This method does not take any input and does not return any value. So, use static 'void'.
+     * This method does not take any input and does not return any value. So, use 'void'.
 	 * 
      * @param n The number of lines to print.
      */
