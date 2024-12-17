@@ -67,42 +67,26 @@ class Rectangle extends Shape {
 
 public class Advanced_FinalExamPractice2_12_10 {
 	
+	// 靜態變數應放在類別內部
+    static Scanner scn = new Scanner(System.in);
+    static Shape[] shapes = new Shape[10];
+    static int count = 0;
+	
 	public static void main(String[] args){
-		Scanner scn = new Scanner(System.in);
-		Shape[] shapes = new Shape[10];
-		int count = 0;
 		
 		while (true){
-			System.out.println("Enter the type of shape (Circle or Rectangle) or 'exit' to stop:");
-			String type = scn.next();
+			
+			String type = setShapeType();
 			
 			if (type.equalsIgnoreCase("exit")){
 				break;
 			}
 			
 			if (type.equalsIgnoreCase("Circle")){
-				System.out.printf("Enter radius: ");
-				double radius = scn.nextDouble();
-				Circle circle = new Circle(radius);
-
-				System.out.printf("Enter color: ");
-				String color = scn.next();
-				circle.setColor(color);
-				
-				shapes[count++] = circle;
+				addCircle();
 				
 			} else if (type.equalsIgnoreCase("Rectangle")){
-				System.out.printf("Enter width: ");
-				double width = scn.nextDouble();
-				System.out.printf("Enter length: ");
-				double length = scn.nextDouble();
-				Rectangle rectangle = new Rectangle(width, length);
-				
-				System.out.printf("Enter color: ");
-				String color = scn.next();
-				rectangle.setColor(color);
-				
-				shapes[count++] = rectangle;
+				addRectangle();
 				
 			} else {
 				System.out.println("Invalid shape type. Please enter 'Circle' or 'Rectangle'.");
@@ -114,13 +98,56 @@ public class Advanced_FinalExamPractice2_12_10 {
 			}
 		}
 		
-		System.out.println("\nShapes you entered:");
+		displayShapes();
+		
+		extraPractice();
+		
+		scn.close();
+		
+	}
+	
+	static String setShapeType(){
+		System.out.println("Enter the type of shape (Circle or Rectangle) or 'exit' to stop:");
+		return scn.next();
+	}
+	
+	static void addCircle(){
+		System.out.printf("Enter radius: ");
+		double radius = scn.nextDouble();
+		Circle circle = new Circle(radius);
+
+		System.out.printf("Enter color: ");
+		String color = scn.next();
+		circle.setColor(color);
+		
+		shapes[count++] = circle;
+	}
+	
+	static void addRectangle() {
+		System.out.printf("Enter width: ");
+		double width = scn.nextDouble();
+		
+		System.out.printf("Enter length: ");
+		double length = scn.nextDouble();
+		
+		Rectangle rectangle = new Rectangle(width, length);
+		
+		System.out.printf("Enter color: ");
+		String color = scn.next();
+		rectangle.setColor(color);
+		
+		shapes[count++] = rectangle;
+	}
+	
+	static void displayShapes() {
+		System.out.println("\n Shapes you entered:");
 		for (int i = 0; i < count; i++){
 			shapes[i].show();
 		}
-		
-		/* Extra Practice */
-		System.out.println("\n === Extra Practice:");
+	}
+	
+	static void extraPractice(){
+		System.out.println("\n === \n Extra Practice: ");
 		int[][] test = 
             {{15, 16, 17, 8},
              {18, 19, 20, 25},
@@ -131,9 +158,7 @@ public class Advanced_FinalExamPractice2_12_10 {
                 System.out.printf("%d,", test[i][j]);
             }
         }
-		
-		scn.close();
-		
+		System.out.println();
 	}
 	
 }
